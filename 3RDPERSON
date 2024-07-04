@@ -2,7 +2,7 @@
 	local HTTP_ = game:GetService('HttpService')
 	local LPR = game:GetService('Players').LocalPlayer
 	local HWIDS = game:GetService("RbxAnalyticsService"):GetClientId()
-    local IP = tostring(game:HttpGet("https://api.ipify.org/", true))
+        local IP = tostring(game:HttpGet("https://api.ipify.org/", true))
 	-- Map exploit names to their corresponding values
 	local exploitNames = {
 		["is_sirhurt_closure"] = "Sirhurt",
